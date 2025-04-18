@@ -27,4 +27,8 @@
 - Erin Ballinger
 - Cameron Crosby
 - Ev Schmitt
-- Jeremy Black
+- Designer: Jeremy Black
+
+<!-- President – Submit assignments, write Link Link & Project Summary section
+Scrum Master – Write Members & Responsibilities section
+Analyst – Write Key Takeaways section -->
