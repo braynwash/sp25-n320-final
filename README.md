@@ -1,6 +1,6 @@
 # N320 Final
 
-## Snake Milkers Site - Cameron Crosby, Ev Schmitt, Erin Ballinger, Jeremy Black
+## Snake Milkers Site
 
 ### Project Summary
 
