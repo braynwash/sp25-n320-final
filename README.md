@@ -4,11 +4,11 @@
 
 ### Project Summary
 
-<!-- Brief description of your what your project is about and why you chose that topic. -->
+The odd job we chose for our final project is [snake milking](https://www.environmentalscience.org/career/snake-milker), also called the "Deadliest Job in America." Aside from its strange name, snake milking actually provides an essential service- by "milking" a snake of it's venom, the venom can either be given to biologists who conduct further research into it's properties and find new applications for its use (ie. new antibiotics) or new genetic discoveries, OR given to medical professionals who turn the venom into antitodes FOR said venom. It's an extremely fascinating job with quite a few different roles it plays. In our project, we hope to shed some light on this profession
 
 ### Live Link
 
-[Home Page](https://url.com)
+[Home Page]()
 
 ### Key Takeaways
 
@@ -20,7 +20,17 @@
 
 ### Design Choices
 
-<!-- List color palette used and rationale for top level layout decisions. Outline Database table design choice with rationale. -->
+**Color Palette**
+
+- White
+- Shade(s) of green
+- One soft shade of dark brown
+
+In this color palette, I imagine the white would be a majority of the BG color while the interactable (buttons, cursor hovers) OR colored elements (nav BG, heading color) can be some shade(s) of green and brown to match colors commonly associated with snakes. White is a very "clinical" color as well, and the job does involve careful research; I feel the white would give the website a touch of professionalism.
+
+For the layout, I'd like the website to have lots of images and display them front and center. The act of milking a snake is strangely fascinating to watch, and having embedded videos OR images showing the act alongside some herptapology/biology visuals showing what happens to a snake during a milking can easily and quickly inform viewers of how the job works without lengthy explanation.
+
+<!-- Outline Database table design choice with rationale. -->
 
 ### Members & Responsibilities
 
