@@ -13,6 +13,15 @@ The odd job we chose for our final project is [snake milking](https://www.enviro
 ### Key Takeaways
 
 <!-- Understanding of why we are doing this project -->
+Our project aims to educate and inform viewers about the value and process of snake milking through engaging and visual content.
+
+Snake milking is a niche, high-risk profession with significant scientific and medical impact.
+
+The profession supports both venom research and antivenom production.
+
+The project highlights the visual intrigue and biological complexity of snake milking.
+
+Emphasis was placed on strong visual communication to reduce reliance on text-heavy explanations.
 
 ### Core Webpages
 
