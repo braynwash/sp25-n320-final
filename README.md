@@ -35,9 +35,16 @@ For the layout, I'd like the website to have lots of images and display them fro
 ### Members & Responsibilities
 
 - Erin Ballinger
-- Cameron Crosby
+- [Scrum Master](#Members-&-Responsibilities): Cameron Crosby
+  - Members & Responsibilities
+  - About Snake Milking Page
+  - Top Snake Milkers of 2025 Page
+  - SQLite Database
 - Ev Schmitt
-- Designer: Jeremy Black
+- [Designer](#Design-Choices): Jeremy Black
+    - [Project Summary](#project-summary)
+    - [Color Palette](#color-palette)
+    - 
 
 <!-- President – Submit assignments, write Link Link & Project Summary section
 Scrum Master – Write Members & Responsibilities section
