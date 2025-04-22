@@ -13,6 +13,7 @@ The odd job we chose for our final project is [snake milking](https://www.enviro
 ### Key Takeaways
 
 <!-- Understanding of why we are doing this project -->
+
 Our project aims to educate and inform viewers about the value and process of snake milking through engaging and visual content.
 
 Snake milking is a niche, high-risk profession with significant scientific and medical impact.
@@ -43,7 +44,7 @@ For the layout, I'd like the website to have lots of images and display them fro
 
 ### Members & Responsibilities
 
-- Erin Ballinger
+- [Analyst](#key-takeaways): Erin Ballinger
 - [Scrum Master](#Members-&-Responsibilities): Cameron Crosby
   - Members & Responsibilities
   - About Snake Milking Page
@@ -51,9 +52,10 @@ For the layout, I'd like the website to have lots of images and display them fro
   - SQLite Database
 - Ev Schmitt
 - [Designer](#Design-Choices): Jeremy Black
-    - [Project Summary](#project-summary)
-    - [Color Palette](#color-palette)
-    - 
+  - [Project Summary](#project-summary)
+  - [Color Palette](#color-palette)
+  - Home page
+  - Snake milker "gear" shop page
 
 <!-- President – Submit assignments, write Link Link & Project Summary section
 Scrum Master – Write Members & Responsibilities section
