@@ -67,20 +67,22 @@ For the layout, I'd like the website to have lots of images and display them fro
 
 - [Analyst](#key-takeaways): Erin Ballinger
   - API Endpoints
+  - Contact Page
+  - Leading Companies in Anti-Venom Production Page (CRUD)
 - [Scrum Master](#Members-&-Responsibilities): Cameron Crosby
   - Members & Responsibilities
   - About Snake Milking Page
-  - Top Snake Milkers of 2025 Page
+  - Top Snake Milkers of 2025 Page (CRUD)
   - SQLite Database
 - [President](#Core-Webpages): Ev Schmitt
   - Core Webpages
-  - Snake Milking History Page
+  - Snake Milking History Page (CRUD)
   - Snake Statistics Page
 - [Designer](#Design-Choices): Jeremy Black
   - [Project Summary](#project-summary)
   - [Color Palette](#color-palette)
   - Home page
-  - Snake milker "gear" shop page
+  - Snake milker "gear" shop page (CRUD)
 
 <!-- President – Submit assignments, write Link Link & Project Summary section
 Scrum Master – Write Members & Responsibilities section
