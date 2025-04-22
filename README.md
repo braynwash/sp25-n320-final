@@ -66,6 +66,7 @@ For the layout, I'd like the website to have lots of images and display them fro
 ### Members & Responsibilities
 
 - [Analyst](#key-takeaways): Erin Ballinger
+  - API Endpoints
 - [Scrum Master](#Members-&-Responsibilities): Cameron Crosby
   - Members & Responsibilities
   - About Snake Milking Page
