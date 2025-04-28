@@ -1,0 +1,20 @@
+{
+  "name": "sp25-n320-final",
+  "version": "1.0.0",
+  "description": "The odd job we chose for our final project is [snake milking](https://www.environmentalscience.org/career/snake-milker), also called the \"Deadliest Job in America.\" Aside from its strange name, snake milking actually provides an essential service- by \"milking\" a snake of it's venom, the venom can either be given to biologists who conduct further research into it's properties and find new applications for its use (ie. new antibiotics) or new genetic discoveries, OR given to medical professionals who turn the venom into antitodes FOR said venom. It's an extremely fascinating job with quite a few different roles it plays. In our project, we hope to shed some light on this profession",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
