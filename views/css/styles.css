@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background for a snake-like theme */
+    color: #e0e0e0; /* Light text for contrast */
+}
+
+/* Header */
+header {
+    background-color: #2a662a; /* Snake green */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav li {
+    list-style-type: none;
+    padding: 20px;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    margin-left: -20px;
+}
+
+/* Links */
+a {
+    color: #66cc66; /* Bright green for snake theme */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #99ff99; /* Lighter green on hover */
+    text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    background-color: #2a662a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #3d8b3d; /* Slightly lighter green */
+}
+
+/* Containers */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #262626; /* Slightly lighter than body background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Snake Pattern */
+.snake-pattern {
+    background: repeating-linear-gradient(
+        45deg,
+        #2a662a,
+        #2a662a 10px,
+        #1a4d1a 10px,
+        #1a4d1a 20px
+    );
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #2a662a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

@@ -76,8 +76,8 @@ For the layout, I'd like the website to have lots of images and display them fro
   - SQLite Database
 - [President](#Core-Webpages): Ev Schmitt
   - Core Webpages
-  - Snake Milking History Page (CRUD)
-  - Snake Statistics Page
+  - Snake Milking History Page 
+  - Snake Statistics Page (CRUD)
 - [Designer](#Design-Choices): Jeremy Black
   - [Project Summary](#project-summary)
   - [Color Palette](#color-palette)
