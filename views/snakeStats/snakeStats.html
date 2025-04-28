@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ssssssnake Milkersssss</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Snake Statistics</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../about/about.html">About</a></li>
-                <li><a href="../history/history.html">History</a></li>
-                <li><a href="../snakeStats/snakeStats.html">Stats</a></li>
-            </ul>
-        </nav>
+      <h1>Snake Statistics</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/about.html">About</a></li>
+          <li><a href="../history/history.html">History</a></li>
+          <li><a href="../snakeStats/snakeStats.html">Stats</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <h2>Page Content</h2>
-        <p>This is where the main content of the page will go.</p>
+      <h2>Page Content</h2>
+      <p>This is where the main content of the page will go.</p>
+      <div id="snakeContainer"></div>
+      <button id="openModalBtn">Add a Snake</button>
+
+      <!-- Create Snake Modal -->
+      <div id="snakeModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add a New Snake</h2>
+          <form id="snakeForm">
+            <input
+              type="text"
+              id="name"
+              placeholder="Snake Name"
+              required
+            /><br />
+            <input
+              type="text"
+              id="species"
+              placeholder="Species"
+              required
+            /><br />
+            <input
+              type="text"
+              id="venom"
+              placeholder="Type of Venom"
+              required
+            /><br />
+            <input
+              type="text"
+              id="danger"
+              placeholder="Danger Level"
+              required
+            /><br /><br />
+            <button type="submit">Add Snake</button>
+          </form>
+        </div>
+      </div>
     </main>
     <footer>
-        <p>They did WHAT to a snake?</p>
+      <p>They did &nbsp; <i>WHAT</i> &nbsp; to a snake?</p>
     </footer>
-</body>
+    <script src="../../js/snakeStats.js"></script>
+  </body>
 </html>
