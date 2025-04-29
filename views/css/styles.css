@@ -344,3 +344,24 @@ form.contact input[type="button"] {
   padding: 4px 0;
   cursor: pointer;
 }
+
+/* Leading Companies */
+#company-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+.company-card {
+  background: #f4f4f4;
+  border-radius: 10px;
+  padding: 1rem;
+  flex: 1 1 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.company-card h3 {
+  margin: 0 0 0.5rem;
+}
+.company-card p {
+  margin: 0;
+}
