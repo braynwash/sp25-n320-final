@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Snake Milkers</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Snake Statistics</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/about.html">About</a></li>
+          <li><a href="../history/history.html">History</a></li>
+          <li><a href="../snakeStats/snakeStats.html">Stats</a></li>
+          <li>
+            <a href="../topSnakeMilkers/topSnakeMilkers.html">Snake Milkers</a>
+          </li>
+          <li><a href="../milkGear/milkGear.html">Gear</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Ever Wondered Who the Top Snake Milkers Are?</h2>
+      <p>
+        Well, now you know! These are the best performing snake milkers of the
+        year, rated on safety and hours committed.
+      </p>
+      <div class="snakeContainer"></div>
+      <table class="snakeMilkers"></table>
+      <div class="adminDashboard">
+        <h4>Admin Controls</h4>
+        <p>
+          ID is required for any operations. Updating only requires one other
+          input, while creating a new record requires all inputs be filled out.
+        </p>
+        <form id="snakeMilkerForm">
+          <input
+            type="number"
+            name="snakeMilkerId"
+            id="snakeMilkerId"
+            placeholder="ID"
+            required
+          />
+          <input
+            type="text"
+            name="snakeMilkerName"
+            id="snakeMilkerName"
+            placeholder="Name"
+          />
+          <input
+            type="number"
+            name="snakeMilkerSafety"
+            id="snakeMilkerSafety"
+            placeholder="Safety Rating"
+          />
+          <input
+            type="number"
+            name="snakeMilkerHours"
+            id="snakeMilkerHours"
+            placeholder="Hours Committed"
+          />
+          <button class="addSnakeMilker" type="submit">
+            Create New Snake Milker
+          </button>
+          <button class="editSnakeMilker" type="submit">
+            Update Existing Snake Milker
+          </button>
+          <button class="deleteSnakeMilker" type="submit">
+            Delete Snake Milker
+          </button>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>They did <i>WHAT</i> to a snake?</p>
+    </footer>
+    <script src="../../js/snakeMilkers.js"></script>
+  </body>
+</html>
