@@ -19,8 +19,8 @@
       </nav>
     </header>
     <main>
-      <h2>Page Content</h2>
-      <p>This is where the main content of the page will go.</p>
+      <h2>Ssssnake Ssssstatisssticsssss</h2>
+      <p>The DEADLIEST snakes this side of the Milky Way.</p>
       <div id="snakeContainer"></div>
       <button id="openModalBtn">Add a Snake</button>
 
@@ -30,37 +30,47 @@
           <span class="close">&times;</span>
           <h2>Add a New Snake</h2>
           <form id="snakeForm">
+            <label for="name">Snake Name</label>
+            <br/>
             <input
               type="text"
               id="name"
               placeholder="Snake Name"
               required
-            /><br />
+            /><br/>
+            <label for="image">Snake Image</label>
+            <input type="file" id="image" accept="image/*" /><br />
+            <label for="species">Species</label>
+            <br/>
             <input
               type="text"
               id="species"
               placeholder="Species"
               required
-            /><br />
+            /><br/>
+            <label for="venom">Type of Venom</label>
+            <br/>
             <input
               type="text"
               id="venom"
               placeholder="Type of Venom"
               required
-            /><br />
+            /><br/>
+            <label for="danger">Danger Level</label>
+            <br/>
             <input
               type="text"
               id="danger"
               placeholder="Danger Level"
               required
-            /><br /><br />
-            <button type="submit">Add Snake</button>
+            /><br/><br/>
+            <button class="addSnake" type="submit">Add Snake</button>
           </form>
         </div>
       </div>
     </main>
     <footer>
-      <p>They did &nbsp; <i>WHAT</i> &nbsp; to a snake?</p>
+      <p>They did <i>WHAT</i> to a snake?</p>
     </footer>
     <script src="../../js/snakeStats.js"></script>
   </body>

@@ -1,8 +1,8 @@
 const snakes = [
-    { id: 1, name: "King Cobra", species: "Ophiophagus hannah", venom: "Neurotoxic", danger: "High", editable: false },
-    { id: 2, name: "Eastern Diamondback Rattlesnake", species: "Crotalus adamanteus", venom: "Hemotoxic", danger: "High", editable: false },
+    { id: 1, name: "King Cobra", image: "kingCobra.png", species: "Ophiophagus hannah", venom: "Neurotoxic", danger: "High", editable: false },
+    { id: 2, name: "Eastern Diamondback Rattlesnake", image: "easternDiamondback.png", species: "Crotalus adamanteus", venom: "Hemotoxic", danger: "High", editable: false },
     // User-added snakes example
-    { id: 3, name: "User's Snake", species: "Unknownus snakus", venom: "Unknown", danger: "Medium", editable: true }
+   // { id: 3, name: "User's Snake", species: "Unknownus snakus", venom: "Unknown", danger: "Medium", editable: true }
   ];
 
   const container = document.getElementById("snakeContainer");
@@ -15,8 +15,8 @@ function renderSnakes() {
     card.className = "snake-card";
     
     card.innerHTML = `
-      <h3>${snake.name}</h3>
-      <img src="../../assets/img/" alt="${snake.name}">
+      <h2>${snake.name}</h3>
+      <img class="snakeImg" src="../../assets/img/snakeImg/${snake.image}" alt="${snake.name}">
       <p><strong>Species:</strong> ${snake.species}</p>
       <p><strong>Venom:</strong> ${snake.venom}</p>
       <p><strong>Danger:</strong> ${snake.danger}</p>
