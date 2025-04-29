@@ -100,3 +100,6 @@ snakeForm.addEventListener("submit", function(event) {
   snakeForm.reset(); // Clear the form
 });
 
+document.getelemtById("editBtn").addEventListener("click", function(event) {
+
+});
