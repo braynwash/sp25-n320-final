@@ -344,3 +344,74 @@ form.contact input[type="button"] {
   padding: 4px 0;
   cursor: pointer;
 }
+
+/* Top Snake Milkers Styles */
+.snakeMilkers {
+  width: 500px;
+  border: 2px solid #3a653a;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+
+  tr,
+  th,
+  td {
+    border: 1px solid #3a653a;
+    text-align: center;
+  }
+
+  th {
+    background-color: #89b889;
+  }
+}
+
+.adminDashboard {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  .errorText {
+    font-weight: bold;
+    color: #da3d48;
+    margin-bottom: 10px;
+  }
+
+  input {
+    background-color: #89b889;
+    border: 1px solid black;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+
+  input::placeholder {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .adminButtons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 100px;
+      font-size: 14px;
+      transition: 0.4s all;
+    }
+
+    button:hover {
+      background-color: #1d4b1d;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      background-color: #5bba5b;
+      transform: scale(1.3);
+    }
+  }
+}
