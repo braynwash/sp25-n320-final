@@ -35,13 +35,16 @@ async function getLeadingCompaniesById(companyId) {
 // add row
 async function addNewCompany(companyData = {}) {
   return new Promise((resolve, reject) => {
-    if (!companyData.name || !companyData.litersPerYear)
+    console.log(companyData);
+
+    if (!companyData.name || !companyData.litersPerYear) {
       reject("Company must have a name AND production rate in liters per year");
+    }
     db.run(
       `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
       function (err) {
         if (err) reject(err);
-        else resolve();
+        else resolve("Company Added Successfully");
       }
     );
   });
@@ -82,7 +85,7 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
       `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
       function (err) {
         if (err) reject(err);
-        else resolve();
+        else resolve("Added Snake Milker");
       }
     );
   });
@@ -120,7 +123,7 @@ async function addNewSnakeStatistic(snakeData = {}) {
       `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
       function (err) {
         if (err) reject(err);
-        else resolve();
+        else resolve("Added Snake Statistic");
       }
     );
   });
@@ -158,7 +161,7 @@ async function addNewSnakeShop(shopData = {}) {
       `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
       function (err) {
         if (err) reject(err);
-        else resolve();
+        else resolve("Added Shop Item");
       }
     );
   });
