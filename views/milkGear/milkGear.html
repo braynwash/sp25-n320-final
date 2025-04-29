@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake Milking Gear</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Milking Gear Shop</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about/about.html">About</a></li>
+        <li><a href="../history/history.html">History</a></li>
+        <li><a href="../snakeStats/snakeStats.html">Stats</a></li>
+        <li><a href="./milkGear/milkGear.html">Gear</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2>Gear Up to Milk Those Snakes!</h2>
+    <p>Looking to milk some venom? Grab some gear to get started!</p>
+    <div id="gearContainer" class="gearContainer"></div>
+    <button id="viewCartBtn">View Cart</button>
+
+   <!-- MODAL FOR CART SO I DONT MAKE A WHOLE NEW PAGE CRYING EMOJI -->
+    <div id="cartModal" class="gearModal">
+      <div class="modalContent">
+        <span class="closeCart">&times;</span>
+        <h2>Your Gear Cart</h2>
+        <ul id="cartList"></ul>
+        <button onclick="checkoutCart()">Checkout</button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Got Milk?</p>
+  </footer>
+
+  <script src="../../js/milkGear.js"></script>
+</body>
+</html>
