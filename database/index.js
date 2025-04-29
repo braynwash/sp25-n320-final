@@ -25,10 +25,13 @@ async function getAllLeadingCompanies() {
 // get by id
 async function getLeadingCompaniesById(companyId) {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM leadingCompanies WHERE companyId = ${companyId};`, function (err, rows) {
-      if (err) reject(err);
-      else resolve(rows);
-    });
+    db.all(
+      `SELECT * FROM leadingCompanies WHERE companyId = ${companyId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
+      }
+    );
   });
 }
 
@@ -42,6 +45,19 @@ async function addNewCompany(companyData = {}) {
       function (err) {
         if (err) reject(err);
         else resolve();
+      }
+    );
+  });
+}
+
+// delete row
+async function deleteCompany(companyId) {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `DELETE FROM leadingCompanies WHERE companyId = ${companyId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
       }
     );
   });
@@ -76,13 +92,32 @@ async function getSnakeMilkersById(snakeMilkerId) {
 // add row
 async function addNewSnakeMilker(snakeMilkerData = {}) {
   return new Promise((resolve, reject) => {
-    if (!snakeMilkerData.name || !snakeMilkerData.safetyRating || !snakeMilkerData.hoursCommitted)
-      reject("Snake Milker Data is not complete. Missing name or safety rating or hours committed");
+    if (
+      !snakeMilkerData.name ||
+      !snakeMilkerData.safetyRating ||
+      !snakeMilkerData.hoursCommitted
+    )
+      reject(
+        "Snake Milker Data is not complete. Missing name or safety rating or hours committed"
+      );
     db.run(
       `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
       function (err) {
         if (err) reject(err);
         else resolve();
+      }
+    );
+  });
+}
+
+// delete row
+async function deleteSnakeMilker(snakeMilkerId) {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `DELETE FROM topSnakeMilkers WHERE snakeMilkerId = ${snakeMilkerId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
       }
     );
   });
@@ -104,10 +139,13 @@ async function getAllSnakeStatistics() {
 // get by id
 async function getSnakeStatisticsById(snakeId) {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM snakeStatistics WHERE snakeId = ${snakeId};`, function (err, rows) {
-      if (err) reject(err);
-      else resolve(rows);
-    });
+    db.all(
+      `SELECT * FROM snakeStatistics WHERE snakeId = ${snakeId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
+      }
+    );
   });
 }
 
@@ -115,12 +153,27 @@ async function getSnakeStatisticsById(snakeId) {
 async function addNewSnakeStatistic(snakeData = {}) {
   return new Promise((resolve, reject) => {
     if (!snakeData.name || !snakeData.binomialName || !snakeData.venomType)
-      reject("Snake Data is not complete. Missing name or binomial name or venom data.");
+      reject(
+        "Snake Data is not complete. Missing name or binomial name or venom data."
+      );
     db.run(
       `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
       function (err) {
         if (err) reject(err);
         else resolve();
+      }
+    );
+  });
+}
+
+// delete row
+async function deleteSnakeStatistic(snakeId) {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `DELETE FROM snakeStatistics WHERE snakeId = ${snakeId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
       }
     );
   });
@@ -142,10 +195,13 @@ async function getAllSnakeShop() {
 // get by id
 async function getSnakeShopById(shopId) {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM snakeShop WHERE shopId = ${shopId};`, function (err, rows) {
-      if (err) reject(err);
-      else resolve(rows);
-    });
+    db.all(
+      `SELECT * FROM snakeShop WHERE shopId = ${shopId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
+      }
+    );
   });
 }
 
@@ -159,6 +215,19 @@ async function addNewSnakeShop(shopData = {}) {
       function (err) {
         if (err) reject(err);
         else resolve();
+      }
+    );
+  });
+}
+
+// delete row
+async function deleteSnakeShop(shopId) {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `DELETE FROM snakeShop WHERE shopId = ${shopId};`,
+      function (err, rows) {
+        if (err) reject(err);
+        else resolve(rows);
       }
     );
   });
@@ -179,4 +248,8 @@ module.exports = {
   getAllSnakeShop,
   getSnakeShopById,
   addNewSnakeShop,
+  deleteCompany,
+  deleteSnakeMilker,
+  deleteSnakeStatistic,
+  deleteSnakeShop,
 };
