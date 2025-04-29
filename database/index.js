@@ -54,7 +54,7 @@ async function addNewCompany(companyData = {}) {
               [companyData.name, companyData.litersPerYear],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("Company Added");
               }
             );
           } else {
@@ -64,7 +64,7 @@ async function addNewCompany(companyData = {}) {
               [companyData.name, companyData.litersPerYear, companyData.companyId],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("Company Updated");
               }
             );
           }
@@ -76,7 +76,7 @@ async function addNewCompany(companyData = {}) {
         [companyData.name, companyData.litersPerYear],
         function (err) {
           if (err) reject(err);
-          else resolve();
+          else resolve("Company Added");
         }
       );
     }
@@ -139,7 +139,7 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
               [snakeMilkerData.name, snakeMilkerData.safetyRating, snakeMilkerData.hoursCommitted],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("New Snake Milker Added");
               }
             );
           } else {
@@ -154,7 +154,7 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
               ],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("Snake Milker Updated");
               }
             );
           }
@@ -166,7 +166,7 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
         [snakeMilkerData.name, snakeMilkerData.safetyRating, snakeMilkerData.hoursCommitted],
         function (err) {
           if (err) reject(err);
-          else resolve();
+          else resolve("Snake Milker Added");
         }
       );
     }
@@ -229,7 +229,7 @@ async function addNewSnakeStatistic(snakeData = {}) {
               [snakeData.name, snakeData.binomialName, snakeData.venomType],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("Added Snake Statistic");
               }
             );
           } else {
@@ -239,7 +239,7 @@ async function addNewSnakeStatistic(snakeData = {}) {
               [snakeData.name, snakeData.binomialName, snakeData.venomType, snakeData.snakeId],
               function (err) {
                 if (err) reject(err);
-                else resolve();
+                else resolve("Updated Snake Statistic");
               }
             );
           }
@@ -251,7 +251,7 @@ async function addNewSnakeStatistic(snakeData = {}) {
         [snakeData.name, snakeData.binomialName, snakeData.venomType],
         function (err) {
           if (err) reject(err);
-          else resolve();
+          else resolve("Added Snake Statistic");
         }
       );
     }
@@ -308,7 +308,7 @@ async function addNewSnakeShop(shopData = {}) {
             [shopData.name, shopData.category, shopData.price],
             function (err) {
               if (err) reject(err);
-              else resolve();
+              else resolve("Added Shop Item");
             }
           );
         } else {
@@ -318,7 +318,7 @@ async function addNewSnakeShop(shopData = {}) {
             [shopData.name, shopData.category, shopData.price, shopData.shopId],
             function (err) {
               if (err) reject(err);
-              else resolve();
+              else resolve("Updated Shop Item");
             }
           );
         }
@@ -329,7 +329,7 @@ async function addNewSnakeShop(shopData = {}) {
         [shopData.name, shopData.category, shopData.price],
         function (err) {
           if (err) reject(err);
-          else resolve();
+          else resolve("Added Shop Item");
         }
       );
     }
