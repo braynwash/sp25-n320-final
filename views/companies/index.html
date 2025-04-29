@@ -29,12 +29,27 @@
         <h1>Leading Companies</h1>
         <div id="company-container"></div>
 
+        <form id="company-form" style="margin-bottom: 2rem">
+          <h2>Add a New Company</h2>
+          <label>
+            Company Name:
+            <input type="text" name="companyName" required />
+          </label>
+          <label>
+            Liters per Year:
+            <input type="number" name="litersPerYear" required min="1" />
+          </label>
+          <button type="submit">Add Company</button>
+          <p id="form-message" style="color: green"></p>
+        </form>
+
         <script>
           async function loadCompanies() {
             try {
               const res = await fetch("/api/leadingCompanies");
               const data = await res.json();
               const container = document.getElementById("company-container");
+              container.innerHTML = "";
 
               data.response.forEach((company) => {
                 const div = document.createElement("div");
@@ -49,6 +64,31 @@
               console.error("Error loading companies:", error);
             }
           }
+
+          document.getElementById("company-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const name = form.companyName.value.trim();
+            const liters = form.litersPerYear.value;
+
+            const res = await fetch(
+              `/api/leadingCompanies/add?companyName=${encodeURIComponent(
+                name
+              )}&litersPerYear=${encodeURIComponent(liters)}`
+            );
+            const msg = document.getElementById("form-message");
+
+            if (res.ok) {
+              msg.textContent = "Company added!";
+              form.reset();
+              await loadCompanies(); // refresh the list
+            } else {
+              const error = await res.json();
+              msg.style.color = "red";
+              msg.textContent = "Error: " + (error.error || "Failed to add company");
+            }
+          });
 
           loadCompanies();
         </script>
