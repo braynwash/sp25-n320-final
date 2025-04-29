@@ -37,7 +37,7 @@ async function addNewCompany(companyData = {}) {
   return new Promise((resolve, reject) => {
     console.log(companyData);
 
-    if (!companyData.name || !companyData.litersPerYear) {
+    if (!companyData.name || !companyData.litersPerYear)
       reject("Company must have a name AND production rate in liters per year");
     if (companyData.companyId) {
       // check if record exists
@@ -274,29 +274,26 @@ async function addNewSnakeShop(shopData = {}) {
       reject("Shop data is not complete. Missing name or category or price.");
     if (shopData.shopId) {
       // check if record exists
-      db.get(
-        `SELECT * FROM snakeShop WHERE shopId = ${shopData.shopId};`,
-        function (err, row) {
-          if (err) reject(err);
-          else if (!row) {
-            db.run(
-              `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
-              function (err) {
-                if (err) reject(err);
-                else resolve();
-              }
-            );
-          } else {
-            db.run(
-              `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
-              function (err) {
-                if (err) reject(err);
-                else resolve();
-              }
-            );
-          }
+      db.get(`SELECT * FROM snakeShop WHERE shopId = ${shopData.shopId};`, function (err, row) {
+        if (err) reject(err);
+        else if (!row) {
+          db.run(
+            `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
+            function (err) {
+              if (err) reject(err);
+              else resolve();
+            }
+          );
+        } else {
+          db.run(
+            `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
+            function (err) {
+              if (err) reject(err);
+              else resolve();
+            }
+          );
         }
-      );
+      });
     } else {
       db.run(
         `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
