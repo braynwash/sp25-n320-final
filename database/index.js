@@ -41,11 +41,30 @@ async function addNewCompany(companyData = {}) {
     if (!companyData.name || !companyData.litersPerYear)
       reject("Company must have a name AND production rate in liters per year");
     if (companyData.companyId) {
-      db.run(
-        `UPDATE leadingCompanies SET name = ${companyData.name}, litersPerYear = ${companyData.litersPerYear} WHERE companyId = ${companyData.companyId};`,
-        function (err) {
+      // check if record exists
+      db.get(
+        `SELECT * FROM leadingCompanies WHERE companyId = ${companyData.companyId};`,
+        function (err, row) {
           if (err) reject(err);
-          else resolve();
+          else if (!row) {
+            // record does not exist. insert new record
+            db.run(
+              `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          } else {
+            // record exists. update record
+            db.run(
+              `UPDATE leadingCompanies SET name = ${companyData.name}, litersPerYear = ${companyData.litersPerYear} WHERE companyId = ${companyData.companyId};`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          }
         }
       );
     } else {
@@ -111,11 +130,28 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
         "Snake Milker Data is not complete. Missing name or safety rating or hours committed"
       );
     if (snakeMilkerData.snakeMilkerId) {
-      db.run(
-        `UPDATE topSnakeMilkers SET name = ${snakeMilkerData.name}, safetyRating = ${snakeMilkerData.safetyRating}, hoursCommitted = ${snakeMilkerData.hoursCommitted} WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
-        function (err) {
+      // check if record exists
+      db.get(
+        `SELECT * FROM topSnakeMilkers WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
+        function (err, row) {
           if (err) reject(err);
-          else resolve();
+          else if (!row) {
+            db.run(
+              `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          } else {
+            db.run(
+              `UPDATE topSnakeMilkers SET name = ${snakeMilkerData.name}, safetyRating = ${snakeMilkerData.safetyRating}, hoursCommitted = ${snakeMilkerData.hoursCommitted} WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          }
         }
       );
     } else {
@@ -177,11 +213,28 @@ async function addNewSnakeStatistic(snakeData = {}) {
         "Snake Data is not complete. Missing name or binomial name or venom data."
       );
     if (snakeData.snakeId) {
-      db.run(
-        `UPDATE snakeStatistics SET name = ${snakeData.name}, binomialName = ${snakeData.binomialName}, venomType = ${snakeData.venomType} WHERE snakeId = ${snakeData.snakeId};`,
-        function (err) {
+      // check if record exists
+      db.get(
+        `SELECT * FROM snakeStatistics WHERE snakeId = ${snakeData.snakeId};`,
+        function (err, row) {
           if (err) reject(err);
-          else resolve();
+          else if (!row) {
+            db.run(
+              `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          } else {
+            db.run(
+              `UPDATE snakeStatistics SET name = ${snakeData.name}, binomialName = ${snakeData.binomialName}, venomType = ${snakeData.venomType} WHERE snakeId = ${snakeData.snakeId};`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          }
         }
       );
     } else {
@@ -241,11 +294,28 @@ async function addNewSnakeShop(shopData = {}) {
     if (!shopData.name || !shopData.category || !shopData.price)
       reject("Shop data is not complete. Missing name or category or price.");
     if (shopData.shopId) {
-      db.run(
-        `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
-        function (err) {
+      // check if record exists
+      db.get(
+        `SELECT * FROM snakeShop WHERE shopId = ${shopData.shopId};`,
+        function (err, row) {
           if (err) reject(err);
-          else resolve();
+          else if (!row) {
+            db.run(
+              `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          } else {
+            db.run(
+              `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
+              function (err) {
+                if (err) reject(err);
+                else resolve();
+              }
+            );
+          }
         }
       );
     } else {
