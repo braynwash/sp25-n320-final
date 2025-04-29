@@ -14,6 +14,10 @@ const {
   getAllSnakeShop,
   getSnakeShopById,
   addNewSnakeShop,
+  deleteCompany,
+  deleteSnakeMilker,
+  deleteSnakeShop,
+  deleteSnakeStatistic,
 } = require("../database");
 
 router.get("", async function (req, res) {
@@ -31,6 +35,14 @@ router.get("/leadingCompanies/add", async function (req, res) {
       name: req.query.companyName,
       litersPerYear: parseInt(req.query.litersPerYear),
     });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
+  }
+});
+router.get("/leadingCompanies/delete", async function (req, res) {
+  try {
+    const response = await deleteCompany(req.query.id);
     res.status(200).json(response);
   } catch (error) {
     res.status(406).json({ error: error.toString() });
