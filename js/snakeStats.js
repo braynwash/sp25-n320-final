@@ -90,8 +90,9 @@ snakeForm.addEventListener("submit", function(event) {
     species: species,
     venom: venom,
     danger: danger,
-    editable: true
-  };
+    editable: true,
+    image: "defaultSnake.png" // Placeholder image
+  }; 
 
   snakes.push(newSnake); // Add to array
   renderSnakes(); // Re-render snake cards
