@@ -42,22 +42,26 @@ async function addNewCompany(companyData = {}) {
     if (companyData.companyId) {
       // check if record exists
       db.get(
-        `SELECT * FROM leadingCompanies WHERE companyId = ${companyData.companyId};`,
+        `SELECT * FROM leadingCompanies WHERE companyId = ?`,
+        [companyData.companyId],
         function (err, row) {
-          if (err) reject(err);
-          else if (!row) {
-            // record does not exist. insert new record
+          if (err) return reject(err);
+
+          if (!row) {
+            // Record does not exist: insert new record
             db.run(
-              `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
+              `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (?, ?)`,
+              [companyData.name, companyData.litersPerYear],
               function (err) {
                 if (err) reject(err);
                 else resolve();
               }
             );
           } else {
-            // record exists. update record
+            // Record exists: update record
             db.run(
-              `UPDATE leadingCompanies SET name = ${companyData.name}, litersPerYear = ${companyData.litersPerYear} WHERE companyId = ${companyData.companyId};`,
+              `UPDATE leadingCompanies SET name = ?, litersPerYear = ? WHERE companyId = ?`,
+              [companyData.name, companyData.litersPerYear, companyData.companyId],
               function (err) {
                 if (err) reject(err);
                 else resolve();
@@ -68,7 +72,8 @@ async function addNewCompany(companyData = {}) {
       );
     } else {
       db.run(
-        `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
+        `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (?, ?);`,
+        [companyData.name, companyData.litersPerYear],
         function (err) {
           if (err) reject(err);
           else resolve();
@@ -122,20 +127,31 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
     if (snakeMilkerData.snakeMilkerId) {
       // check if record exists
       db.get(
-        `SELECT * FROM topSnakeMilkers WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
+        `SELECT * FROM topSnakeMilkers WHERE snakeMilkerId = ?`,
+        [snakeMilkerData.snakeMilkerId],
         function (err, row) {
-          if (err) reject(err);
-          else if (!row) {
+          if (err) return reject(err);
+
+          if (!row) {
+            // Insert new record
             db.run(
-              `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
+              `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (?, ?, ?)`,
+              [snakeMilkerData.name, snakeMilkerData.safetyRating, snakeMilkerData.hoursCommitted],
               function (err) {
                 if (err) reject(err);
                 else resolve();
               }
             );
           } else {
+            // Update existing record
             db.run(
-              `UPDATE topSnakeMilkers SET name = ${snakeMilkerData.name}, safetyRating = ${snakeMilkerData.safetyRating}, hoursCommitted = ${snakeMilkerData.hoursCommitted} WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
+              `UPDATE topSnakeMilkers SET name = ?, safetyRating = ?, hoursCommitted = ? WHERE snakeMilkerId = ?`,
+              [
+                snakeMilkerData.name,
+                snakeMilkerData.safetyRating,
+                snakeMilkerData.hoursCommitted,
+                snakeMilkerData.snakeMilkerId,
+              ],
               function (err) {
                 if (err) reject(err);
                 else resolve();
@@ -146,7 +162,8 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
       );
     } else {
       db.run(
-        `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
+        `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (?, ?, ?)`,
+        [snakeMilkerData.name, snakeMilkerData.safetyRating, snakeMilkerData.hoursCommitted],
         function (err) {
           if (err) reject(err);
           else resolve();
@@ -198,22 +215,28 @@ async function addNewSnakeStatistic(snakeData = {}) {
     if (!snakeData.name || !snakeData.binomialName || !snakeData.venomType)
       reject("Snake Data is not complete. Missing name or binomial name or venom data.");
     if (snakeData.snakeId) {
-      // check if record exists
+      // Check if record exists
       db.get(
-        `SELECT * FROM snakeStatistics WHERE snakeId = ${snakeData.snakeId};`,
+        `SELECT * FROM snakeStatistics WHERE snakeId = ?`,
+        [snakeData.snakeId],
         function (err, row) {
-          if (err) reject(err);
-          else if (!row) {
+          if (err) return reject(err);
+
+          if (!row) {
+            // Insert new record
             db.run(
-              `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
+              `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (?, ?, ?)`,
+              [snakeData.name, snakeData.binomialName, snakeData.venomType],
               function (err) {
                 if (err) reject(err);
                 else resolve();
               }
             );
           } else {
+            // Update existing record
             db.run(
-              `UPDATE snakeStatistics SET name = ${snakeData.name}, binomialName = ${snakeData.binomialName}, venomType = ${snakeData.venomType} WHERE snakeId = ${snakeData.snakeId};`,
+              `UPDATE snakeStatistics SET name = ?, binomialName = ?, venomType = ? WHERE snakeId = ?`,
+              [snakeData.name, snakeData.binomialName, snakeData.venomType, snakeData.snakeId],
               function (err) {
                 if (err) reject(err);
                 else resolve();
@@ -224,7 +247,8 @@ async function addNewSnakeStatistic(snakeData = {}) {
       );
     } else {
       db.run(
-        `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
+        `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (?, ?, ?)`,
+        [snakeData.name, snakeData.binomialName, snakeData.venomType],
         function (err) {
           if (err) reject(err);
           else resolve();
@@ -273,20 +297,25 @@ async function addNewSnakeShop(shopData = {}) {
     if (!shopData.name || !shopData.category || !shopData.price)
       reject("Shop data is not complete. Missing name or category or price.");
     if (shopData.shopId) {
-      // check if record exists
-      db.get(`SELECT * FROM snakeShop WHERE shopId = ${shopData.shopId};`, function (err, row) {
-        if (err) reject(err);
-        else if (!row) {
+      // Check if record exists
+      db.get(`SELECT * FROM snakeShop WHERE shopId = ?`, [shopData.shopId], function (err, row) {
+        if (err) return reject(err);
+
+        if (!row) {
+          // Insert new record
           db.run(
-            `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
+            `INSERT INTO snakeShop (name, category, price) VALUES (?, ?, ?)`,
+            [shopData.name, shopData.category, shopData.price],
             function (err) {
               if (err) reject(err);
               else resolve();
             }
           );
         } else {
+          // Update existing record
           db.run(
-            `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
+            `UPDATE snakeShop SET name = ?, category = ?, price = ? WHERE shopId = ?`,
+            [shopData.name, shopData.category, shopData.price, shopData.shopId],
             function (err) {
               if (err) reject(err);
               else resolve();
@@ -296,7 +325,8 @@ async function addNewSnakeShop(shopData = {}) {
       });
     } else {
       db.run(
-        `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
+        `INSERT INTO snakeShop (name, category, price) VALUES (?, ?, ?)`,
+        [shopData.name, shopData.category, shopData.price],
         function (err) {
           if (err) reject(err);
           else resolve();
