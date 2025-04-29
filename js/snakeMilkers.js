@@ -33,6 +33,10 @@ function getSnakeMilkers() {
   console.log("getting table: ", snakeMilkers);
   // clear existing rows
   snakeMilkerTable.innerHTML = "";
+
+  // add header rows
+  snakeMilkerTable.innerHTML =
+    "<tr><th>ID</th><th>Name</th><th>Safety Rating</th><th>Hours Committed</th></tr>";
   // get snake milkers array from db
 
   for (let i = 0; i < snakeMilkers.length; i++) {
