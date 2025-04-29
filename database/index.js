@@ -40,13 +40,23 @@ async function addNewCompany(companyData = {}) {
   return new Promise((resolve, reject) => {
     if (!companyData.name || !companyData.litersPerYear)
       reject("Company must have a name AND production rate in liters per year");
-    db.run(
-      `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
-      function (err) {
-        if (err) reject(err);
-        else resolve();
-      }
-    );
+    if (companyData.companyId) {
+      db.run(
+        `UPDATE leadingCompanies SET name = ${companyData.name}, litersPerYear = ${companyData.litersPerYear} WHERE companyId = ${companyData.companyId};`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    } else {
+      db.run(
+        `INSERT INTO leadingCompanies (name, litersPerYear) VALUES (${companyData.name}, ${companyData.litersPerYear});`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    }
   });
 }
 
@@ -100,13 +110,23 @@ async function addNewSnakeMilker(snakeMilkerData = {}) {
       reject(
         "Snake Milker Data is not complete. Missing name or safety rating or hours committed"
       );
-    db.run(
-      `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
-      function (err) {
-        if (err) reject(err);
-        else resolve();
-      }
-    );
+    if (snakeMilkerData.snakeMilkerId) {
+      db.run(
+        `UPDATE topSnakeMilkers SET name = ${snakeMilkerData.name}, safetyRating = ${snakeMilkerData.safetyRating}, hoursCommitted = ${snakeMilkerData.hoursCommitted} WHERE snakeMilkerId = ${snakeMilkerData.snakeMilkerId};`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    } else {
+      db.run(
+        `INSERT INTO topSnakeMilkers (name, safetyRating, hoursCommitted) VALUES (${snakeMilkerData.name}, ${snakeMilkerData.safetyRating}, ${snakeMilkerData.hoursCommitted});`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    }
   });
 }
 
@@ -156,13 +176,23 @@ async function addNewSnakeStatistic(snakeData = {}) {
       reject(
         "Snake Data is not complete. Missing name or binomial name or venom data."
       );
-    db.run(
-      `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
-      function (err) {
-        if (err) reject(err);
-        else resolve();
-      }
-    );
+    if (snakeData.snakeId) {
+      db.run(
+        `UPDATE snakeStatistics SET name = ${snakeData.name}, binomialName = ${snakeData.binomialName}, venomType = ${snakeData.venomType} WHERE snakeId = ${snakeData.snakeId};`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    } else {
+      db.run(
+        `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (${snakeData.name}, ${snakeData.binomialName}, ${snakeData.venomType});`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    }
   });
 }
 
@@ -210,13 +240,23 @@ async function addNewSnakeShop(shopData = {}) {
   return new Promise((resolve, reject) => {
     if (!shopData.name || !shopData.category || !shopData.price)
       reject("Shop data is not complete. Missing name or category or price.");
-    db.run(
-      `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
-      function (err) {
-        if (err) reject(err);
-        else resolve();
-      }
-    );
+    if (shopData.shopId) {
+      db.run(
+        `UPDATE snakeShop SET name = ${shopData.name}, category = ${shopData.category}, price = ${shopData.price} WHERE shopId = ${shopData.shopId};`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    } else {
+      db.run(
+        `INSERT INTO snakeShop (name, category, price) VALUES (${shopData.name}, ${shopData.category}, ${shopData.price});`,
+        function (err) {
+          if (err) reject(err);
+          else resolve();
+        }
+      );
+    }
   });
 }
 
