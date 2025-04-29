@@ -1,14 +1,19 @@
 const router = require("express").Router();
+const { response } = require("express");
 const {
   checkStatus,
   getAllLeadingCompanies,
   getLeadingCompaniesById,
+  addNewCompany,
   getAllTopSnakeMilkers,
   getSnakeMilkersById,
+  addNewSnakeMilker,
   getAllSnakeStatistics,
   getSnakeStatisticsById,
+  addNewSnakeStatistic,
   getAllSnakeShop,
   getSnakeShopById,
+  addNewSnakeShop,
 } = require("../database");
 
 router.get("", async function (req, res) {
@@ -21,11 +26,15 @@ router.get("/leadingCompanies", async function (req, res) {
   res.status(200).json({ response });
 });
 router.get("/leadingCompanies/add", async function (req, res) {
-  if (req.body == undefined) {
-    res.status(418).json(["ERROR 418", "Request body is empty. Also, I'm a teapot"]);
-    return;
+  try {
+    const response = await addNewCompany({
+      name: req.query.companyName,
+      litersPerYear: parseInt(req.query.litersPerYear),
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
   }
-  res.status(501).json("Error 501: Not Implemented");
 });
 router.get("/leadingCompanies/:id", async function (req, res) {
   const companyId = req.params.id;
@@ -36,12 +45,18 @@ router.get("/milkers", async function (req, res) {
   const response = await getAllTopSnakeMilkers();
   res.status(200).json({ response });
 });
+
 router.get("/milkers/add", async function (req, res) {
-  if (req.body == undefined) {
-    res.status(418).json(["ERROR 418", "Request body is empty. Also, I'm a teapot"]);
-    return;
+  try {
+    const response = await addNewSnakeMilker({
+      name: req.query.companyName,
+      safetyRating: req.query.safetyRating,
+      hoursCommitted: parseInt(req.query.hoursCommitted),
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
   }
-  res.status(501).json("Error 501: Not Implemented");
 });
 router.get("/milkers/:id", async function (req, res) {
   const milkerId = req.params.id;
@@ -53,12 +68,17 @@ router.get("/statistics", async function (req, res) {
   const response = await getAllSnakeStatistics();
   res.status(200).json({ response });
 });
-router.get("/statistics/add", async function (req, res) {
-  if (req.body == undefined) {
-    res.status(418).json(["ERROR 418", "Request body is empty. Also, I'm a teapot"]);
+router.post("/statistics/add", async function (req, res) {
+  try {
+    const response = await addNewSnakeStatistic({
+      name: req.query.companyName,
+      binomialName: req.query.binomialName,
+      venomType: req.query.venomType,
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
   }
-  res.status(501).json("Error 501: Not Implemented");
-  return;
 });
 router.get("/statistics/:id", async function (req, res) {
   const statisticId = req.params.id;
@@ -70,11 +90,16 @@ router.get("/snakeShop", async function (req, res) {
   res.status(200).json({ response });
 });
 router.get("/snakeShop/add", async function (req, res) {
-  if (req.body == undefined) {
-    res.status(418).json(["ERROR 418", "Request body is empty. Also, I'm a teapot"]);
-    return;
+  try {
+    const response = await addNewSnakeShop({
+      name: req.query.companyName,
+      company: req.query.company,
+      price: parseInt(req.query.price),
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
   }
-  res.status(501).json("Error 501: Not Implemented");
 });
 router.get("/snakeShop/:id", async function (req, res) {
   const shopId = req.params.id;
