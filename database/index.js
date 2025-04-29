@@ -88,7 +88,7 @@ async function deleteCompany(companyId) {
   return new Promise((resolve, reject) => {
     db.all(`DELETE FROM leadingCompanies WHERE companyId = ${companyId};`, function (err, rows) {
       if (err) reject(err);
-      else resolve(rows);
+      else resolve("Company Deleted");
     });
   });
 }
@@ -180,7 +180,7 @@ async function deleteSnakeMilker(snakeMilkerId) {
       `DELETE FROM topSnakeMilkers WHERE snakeMilkerId = ${snakeMilkerId};`,
       function (err, rows) {
         if (err) reject(err);
-        else resolve(rows);
+        else resolve("Snake Milker Deleted");
       }
     );
   });
@@ -263,7 +263,7 @@ async function deleteSnakeStatistic(snakeId) {
   return new Promise((resolve, reject) => {
     db.all(`DELETE FROM snakeStatistics WHERE snakeId = ${snakeId};`, function (err, rows) {
       if (err) reject(err);
-      else resolve(rows);
+      else resolve("Statistic Deleted");
     });
   });
 }
@@ -341,7 +341,7 @@ async function deleteSnakeShop(shopId) {
   return new Promise((resolve, reject) => {
     db.all(`DELETE FROM snakeShop WHERE shopId = ${shopId};`, function (err, rows) {
       if (err) reject(err);
-      else resolve(rows);
+      else resolve("Item Deleted");
     });
   });
 }
