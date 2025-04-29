@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ssssssnake Milkersssss</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>About Snake Milking</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/about.html">About</a></li>
+          <li><a href="../history/history.html">History</a></li>
+          <li><a href="../snakeStats/snakeStats.html">Stats</a></li>
+          <li>
+            <a href="../topSnakeMilkers/topSnakeMilkers.html">Snake Milkers</a>
+          </li>
+          <li><a href="../milkGear/milkGear.html">Gear</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="pageContent">
+        <h2>Contact Us</h2>
+        <p>Have questions, comments, or concerns? Feel free to contact us using the form below.</p>
+        <p>We look forward to hearing from you!</p>
+        <form class="contact" id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" name="Name" />
+          <label for="name">Email</label>
+          <input type="text" name="Email" />
+          <label for="name">Subject</label>
+          <input type="text" name="Subject" />
+          <label for="name">Body</label>
+          <textarea name="Body" style="resize: vertical"></textarea>
+          <input
+            type="button"
+            value="Submit"
+            onclick="contactForm.style.display = 'none'; contactResponse.style.display = 'block'" />
+        </form>
+        <h3 id="contactResponse" style="display: none">
+          Thanks for reaching out! We will get back to you shortly.
+        </h3>
+      </div>
+    </main>
+    <footer>
+      <p>They did WHAT to a snake?</p>
+    </footer>
+    <script src="../../js/snakeStats.js"></script>
+  </body>
+</html>
