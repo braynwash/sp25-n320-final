@@ -70,6 +70,14 @@ router.get("/milkers/add", async function (req, res) {
     res.status(406).json({ error: error.toString() });
   }
 });
+router.get("/milkers/delete", async function (req, res) {
+  try {
+    const response = await deleteSnakeMilker(req.query.id);
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
+  }
+});
 router.get("/milkers/:id", async function (req, res) {
   const milkerId = req.params.id;
   const response = await getSnakeMilkersById(milkerId);
@@ -92,6 +100,14 @@ router.post("/statistics/add", async function (req, res) {
     res.status(406).json({ error: error.toString() });
   }
 });
+router.get("/statistics/delete", async function (req, res) {
+  try {
+    const response = await deleteSnakeStatistic(req.query.id);
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
+  }
+});
 router.get("/statistics/:id", async function (req, res) {
   const statisticId = req.params.id;
   const response = await getSnakeStatisticsById(statisticId);
@@ -108,6 +124,14 @@ router.get("/snakeShop/add", async function (req, res) {
       company: req.query.company,
       price: parseInt(req.query.price),
     });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(406).json({ error: error.toString() });
+  }
+});
+router.get("/snakeShop/delete", async function (req, res) {
+  try {
+    const response = await deleteSnakeShop(req.query.id);
     res.status(200).json(response);
   } catch (error) {
     res.status(406).json({ error: error.toString() });
