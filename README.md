@@ -26,23 +26,28 @@ Emphasis was placed on strong visual communication to reduce reliance on text-he
 
 ### Core Webpages
 
+#### Home Page 🏠
 
-####  Home Page 🏠
 Step into the danger zone. The home page gives you a quick rundown of our mission: educating the brave and curious about the high-stakes art of snake milking. This is **not** for the faint of heart.
 
-####  About Page ❔
-Who are we? Why are we so interested in *this?* This page reveals our motives, our passion, and our complete disregard for common sense when it comes to venomous reptiles.
+#### About Page ❔
 
-####  Top Snake Milkers / Leaderboard Page 🏆
+Who are we? Why are we so interested in _this?_ This page reveals our motives, our passion, and our complete disregard for common sense when it comes to venomous reptiles.
+
+#### Top Snake Milkers / Leaderboard Page 🏆
+
 Only the best of the best make it here. This leaderboard celebrates the champions of the craft—the ones who can stare down a cobra and walk away with a vial full of victory. Stats, bios, and war stories included.
 
-####  Snake Milking History Page 📜
+#### Snake Milking History Page 📜
+
 Long before lab coats, there were bare hands and quick reflexes. Look through the gritty history of snake milking, including ancient rituals, scientific breakthroughs, and a whole lot of near-death experiences.
 
-####  Snake Statistics Page 📊
-Data so deadly it bites. This page breaks down the various stats and milking difficulty of the most notorious snakes in the world. It’s like fantasy football, but *everything* can kill you.
+#### Snake Statistics Page 📊
 
-####  Snake Milker Shop Page 🛍️
+Data so deadly it bites. This page breaks down the various stats and milking difficulty of the most notorious snakes in the world. It’s like fantasy football, but _everything_ can kill you.
+
+#### Snake Milker Shop Page 🛍️
+
 You can’t walk into the pit unarmed. Gear up with our professional shop full of tools, protective gear, and guidebooks. Danger looks good on you.
 
 ---
@@ -76,7 +81,7 @@ For the layout, I'd like the website to have lots of images and display them fro
   - SQLite Database
 - [President](#Core-Webpages): Ev Schmitt
   - Core Webpages
-  - Snake Milking History Page 
+  - Snake Milking History Page (JSPDF "Certificate of Completion" that ALL team members work on)
   - Snake Statistics Page (CRUD)
 - [Designer](#Design-Choices): Jeremy Black
   - [Project Summary](#project-summary)

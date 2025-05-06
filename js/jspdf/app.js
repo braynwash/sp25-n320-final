@@ -1,6 +1,6 @@
 import { jsPDF } from "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/jspdf.es.js";
 
-class GeneratePDF {
+export class GeneratePDF {
   pdfDoc;
   position = {
     x: 10,
@@ -31,7 +31,7 @@ class GeneratePDF {
    * @description Downloads the PDF document to device
    */
   downloadPdf() {
-    this.pdfDoc.save("mydoc.pdf");
+    this.pdfDoc.save("snakeCertificate.pdf");
   }
 
   /**
@@ -77,14 +77,3 @@ class GeneratePDF {
     }
   }
 }
-
-const myPdf = new GeneratePDF("pdfPreview");
-
-myPdf.addHeader("Snake Milker Certification");
-myPdf.addText("This certificate hereby certifies that ");
-
-// insert name
-
-myPdf.addText(
-  "has successfully completed the Snake Milker Certification course."
-);

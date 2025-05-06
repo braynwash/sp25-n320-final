@@ -89,10 +89,57 @@
           >
         </li>
       </ol>
+
+      <section class="certificateSection">
+        <h2>Generate Your Certificate of Completion</h2>
+        <p>Congratulations on reading through this page! With your newfound knowledge, you are just beginning your journey into the wide world of snake milking. Check out and download your new fancy certificate below!</p>
+      
+        <label for="userNameInput">Enter Your Name:</label>
+        <input type="text" id="userNameInput" placeholder="Your Name Here"/>
+      
+          <div class="certBtns">
+            <button id="viewButton">View Certificate</button>
+      
+            <button id="downloadButton" style="display:none;">Download Certificate</button>
+          </div>
+        
+      
+        <div class="pdfContainer"> <!-- frame for the pdf once loaded in -->
+          <iframe id="pdfPreview" title="Certificate Preview"></iframe>
+        </div>
+      </section>
+
     </main>
     <footer>
       <p>They did WHAT to a snake?</p>
     </footer>
-    <script src="../../js/snakeStats.js"></script>
+
+    <script type="module">
+      import { generateCertificate } from '/js/generateCertificate.js';
+    
+      const viewBtn = document.getElementById('viewButton');
+      const downloadBtn = document.getElementById('downloadButton');
+      let currentPdf = null;  
+    
+      viewBtn.addEventListener('click', () => {
+        const name = document.getElementById('userNameInput').value;
+        const pdf = generateCertificate(name, 'pdfPreview');
+        if (pdf) {
+          currentPdf = pdf;
+    
+          document.getElementById('pdfPreview').style.display = 'block';
+          downloadBtn.style.display = 'inline-block';
+        }
+      });
+    
+      downloadBtn.addEventListener('click', () => {
+        if (currentPdf) {
+          currentPdf.downloadPdf();
+        }
+      });
+    </script>
+    
+    
+
   </body>
 </html>
