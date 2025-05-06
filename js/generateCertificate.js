@@ -1,4 +1,3 @@
-// File: js/generateCertificate.js
 import { GeneratePDF } from "./jspdf/app.js";
 
 /**
