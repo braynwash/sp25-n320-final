@@ -61,7 +61,7 @@ router.get("/milkers", async function (req, res) {
 router.get("/milkers/add", async function (req, res) {
   try {
     const response = await addNewSnakeMilker({
-      name: req.query.companyName,
+      name: req.query.name,
       safetyRating: req.query.safetyRating,
       hoursCommitted: parseInt(req.query.hoursCommitted),
     });
