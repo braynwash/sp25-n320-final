@@ -1,5 +1,4 @@
 let currentEditId = null;
-// const snakes = [
 //   {
 //     id: 1,
 //     name: "King Cobra",
@@ -57,13 +56,13 @@ async function renderSnakes() {
       if (snake.editable) {
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
-        editButton.onclick = () => editSnake(snake.snakeId);
+        editButton.onclick = () => openEditModal(snake);
 
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete";
         deleteButton.textContent = "Delete";
         deleteButton.onclick = () => deleteSnake(snake.snakeId);
-
+      
         card.appendChild(editButton);
         card.appendChild(deleteButton);
       }
@@ -74,27 +73,27 @@ async function renderSnakes() {
   }
 }
 
-function editSnake(id) {
-  const snake = snakes.find((s) => s.id === id);
-  if (!snake) return;
+// function editSnake(id) {
+//   const snake = snakes.find((s) => s.id === id);
+//   if (!snake) return;
 
-  currentEditId = id;
+//   currentEditId = id;
 
-  document.getElementById("name").value = snake.name;
-  document.getElementById("species").value = snake.species;
-  document.getElementById("venom").value = snake.venom;
-  document.getElementById("danger").value = snake.danger;
+//   document.getElementById("name").value = snake.name;
+//   document.getElementById("species").value = snake.species;
+//   document.getElementById("venom").value = snake.venom;
+//   document.getElementById("danger").value = snake.danger;
 
-  modal.style.display = "block";
-}
+//   modal.style.display = "block";
+// }
 
-function deleteSnake(id) {
-  const index = snakes.findIndex((snake) => snake.id === id);
-  if (index !== -1) {
-    snakes.splice(index, 1);
-    renderSnakes();
-  }
-}
+// function deleteSnake(id) {
+//   const index = snakes.findIndex((snake) => snake.id === id);
+//   if (index !== -1) {
+//     snakes.splice(index, 1);
+//     renderSnakes();
+//   }
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
   renderSnakes();
@@ -120,39 +119,76 @@ window.onclick = function (event) {
 };
 
 // Form Submit
-snakeForm.addEventListener("submit", function (event) {
+snakeForm.addEventListener("submit", async function (event) {
   event.preventDefault(); 
 
-  const name = document.getElementById("name").value.trim();
-  const species = document.getElementById("species").value.trim();
-  const venom = document.getElementById("venom").value.trim();
-  const danger = document.getElementById("danger").value.trim();
+  const snakeData = {
+    name: document.getElementById('name').value,
+    binomialName: document.getElementById('binomialName').value,
+    venomType: document.getElementById('venomType').value,
+    danger: document.getElementById('danger').value,
+    rating: parseInt(document.getElementById('rating').value),
+    image: "defaultSnake.png", 
+    editable: true,
+  };
+
 
   if (currentEditId !== null) {
-    const snake = snakes.find((s) => s.id === currentEditId);
-    if (snake) {
-      snake.name = name;
-      snake.species = species;
-      snake.venom = venom;
-      snake.danger = danger;
-    }
-    currentEditId = null; // Reset
+    await editSnake(currentEditId, snakeData);
+    currentEditId = null;  
   } else {
-    const newSnake = {
-      id: Date.now(), // quick unique ID
-      name: name,
-      species: species,
-      venom: venom,
-      danger: danger,
-      editable: true,
-      image: "defaultSnake.png", // Placeholder image
-    };
-
-    snakes.push(newSnake);
+    await addNewSnake(snakeData);
   }
+
   renderSnakes();
   modal.style.display = "none";
   snakeForm.reset();
 });
+
+async function addNewSnake(snakeData) {
+  try {
+    const response = await fetch('/api/statistics/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(snakeData)
+    });
+
+    const result = await response.json();
+    // console.log(result);  
+  } catch (error) {
+    console.error('Error adding snake:', error);
+  }
+}
+
+async function editSnake(snakeId, snakeData) {
+  try {
+    const response = await fetch(`/api/statistics/${snakeId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(snakeData)
+    });
+
+    const result = await response.json();
+    // console.log(result);
+  } catch (error) {
+    console.error("Error editing snake:", error);
+  }
+}
+
+function deleteSnake(snakeId) {
+  if (confirm("Are you sure you want to delete this snake?")) {
+    fetch(`/api/statistics/delete?id=${snakeId}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        renderSnakes();
+      })
+      .catch(error => console.error('Error deleting snake:', error));
+  }
+}
 
 document.getElementById("editBtn").addEventListener("click", function (event) {});

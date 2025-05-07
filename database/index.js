@@ -210,61 +210,27 @@ async function getSnakeStatisticsById(snakeId) {
 }
 
 // add row
-async function addNewSnakeStatistic(snakeData = {}) {
+function addNewSnakeStatistic(data) {
   return new Promise((resolve, reject) => {
-    if (!snakeData.name || !snakeData.binomialName || !snakeData.venomType)
-      reject("Snake Data is not complete. Missing name or binomial name or venom data.");
-    if (snakeData.snakeId) {
-      // Check if record exists
-      db.get(
-        `SELECT * FROM snakeStatistics WHERE snakeId = ?`,
-        [snakeData.snakeId],
-        function (err, row) {
-          if (err) return reject(err);
-
-          if (!row) {
-            // Insert new record
-            db.run(
-              `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (?, ?, ?)`,
-              [snakeData.name, snakeData.binomialName, snakeData.venomType],
-              function (err) {
-                if (err) reject(err);
-                else resolve("Added Snake Statistic");
-              }
-            );
-          } else {
-            // Update existing record
-            db.run(
-              `UPDATE snakeStatistics SET name = ?, binomialName = ?, venomType = ? WHERE snakeId = ?`,
-              [snakeData.name, snakeData.binomialName, snakeData.venomType, snakeData.snakeId],
-              function (err) {
-                if (err) reject(err);
-                else resolve("Updated Snake Statistic");
-              }
-            );
-          }
-        }
-      );
-    } else {
-      db.run(
-        `INSERT INTO snakeStatistics (name, binomialName, venomType) VALUES (?, ?, ?)`,
-        [snakeData.name, snakeData.binomialName, snakeData.venomType],
-        function (err) {
-          if (err) reject(err);
-          else resolve("Added Snake Statistic");
-        }
-      );
-    }
+    const { name, binomialName, venomType, danger, rating, image, editable } = data;
+    const stmt = db.prepare("INSERT INTO snakeStatistics (name, binomialName, venomType, danger, rating, image, editable) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    stmt.run([name, binomialName, venomType, danger, rating, image, editable], function (err) {
+      if (err) reject(err);
+      else resolve(this.lastID); 
+    });
+    stmt.finalize();
   });
 }
 
 // delete row
 async function deleteSnakeStatistic(snakeId) {
   return new Promise((resolve, reject) => {
-    db.all(`DELETE FROM snakeStatistics WHERE snakeId = ${snakeId};`, function (err, rows) {
+    const stmt = db.prepare("DELETE FROM snakeStatistics WHERE snakeId = ?");
+    stmt.run([snakeId], function (err) {
       if (err) reject(err);
-      else resolve("Statistic Deleted");
+      else resolve("Snake Deleted");  
     });
+    stmt.finalize();  
   });
 }
 

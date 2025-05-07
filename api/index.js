@@ -92,24 +92,41 @@ router.get("/statistics", async function (req, res) {
     res.status(500).json({ error: error.message });
   }
 });
+
+
 router.post("/statistics/add", async function (req, res) {
+  const { name, binomialName, venomType, danger, rating, image, editable } = req.body;
+
   try {
-    const response = await addNewSnakeStatistic({
-      name: req.query.companyName,
-      binomialName: req.query.binomialName,
-      venomType: req.query.venomType,
+    const result = await addNewSnakeStatistic({
+      name,
+      binomialName,
+      venomType,
+      danger,
+      rating,
+      image,
+      editable
     });
-    res.status(200).json(response);
+
+    res.status(200).json({ message: "Snake added successfully", result });
   } catch (error) {
-    res.status(406).json({ error: error.toString() });
+    res.status(500).json({ error: error.message });
   }
 });
-router.get("/statistics/delete", async function (req, res) {
+
+
+router.delete("/statistics/delete", async function (req, res) {
+  const snakeId = req.query.id;
+
+  if (!snakeId) {
+    return res.status(400).json({ error: "Snake ID is required" });
+  }
+
   try {
-    const response = await deleteSnakeStatistic(req.query.id);
-    res.status(200).json(response);
+    const response = await deleteSnakeStatistic(snakeId);
+    res.status(200).json({ message: response });  
   } catch (error) {
-    res.status(406).json({ error: error.toString() });
+    res.status(500).json({ error: error.toString() }); 
   }
 });
 router.get("/statistics/:id", async function (req, res) {
@@ -148,5 +165,6 @@ router.get("/snakeShop/:id", async function (req, res) {
   const response = await getSnakeShopById(shopId);
   res.status(200).json({ response });
 });
+
 
 module.exports = router;

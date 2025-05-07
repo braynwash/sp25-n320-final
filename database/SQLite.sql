@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS snakeStatistics (
     venomType text not null,
     danger text not null,  
     rating integer not null,
-    image text not null
+    image text not null,
+    editable boolean not null DEFAULT 0
 );
 
 DROP TABLE IF EXISTS snakeStatistics;
