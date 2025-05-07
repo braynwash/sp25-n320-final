@@ -140,6 +140,7 @@ snakeForm.addEventListener("submit", async function (event) {
     await addNewSnake(snakeData);
   }
 
+
   renderSnakes();
   modal.style.display = "none";
   snakeForm.reset();
@@ -191,4 +192,34 @@ function deleteSnake(snakeId) {
   }
 }
 
-document.getElementById("editBtn").addEventListener("click", function (event) {});
+
+function openEditModal(snake) {
+  document.getElementById('name').value = snake.name;
+  document.getElementById('binomialName').value = snake.binomialName;
+  document.getElementById('venomType').value = snake.venomType;
+  document.getElementById('danger').value = snake.danger;
+  document.getElementById('rating').value = snake.rating;
+
+  currentEditId = snake.snakeId;
+
+  modal.style.display = "block";
+}
+
+async function editSnake(snakeId, snakeData) {
+  try {
+    const response = await fetch(`/api/statistics/edit/${snakeId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(snakeData)
+    });
+
+    const result = await response.json();
+    console.log(result); 
+
+  
+    renderSnakes();
+  } catch (error) {
+    console.error("Error editing snake:", error);
+  }
+}
+

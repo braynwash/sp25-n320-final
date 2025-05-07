@@ -234,6 +234,20 @@ async function deleteSnakeStatistic(snakeId) {
   });
 }
 
+function updateSnakeStatistic(id, data) {
+  return new Promise((resolve, reject) => {
+    const { name, binomialName, venomType, danger, rating, image, editable } = data;
+    const stmt = db.prepare("UPDATE snakeStatistics SET name = ?, binomialName = ?, venomType = ?, danger = ?, rating = ?, image = ?, editable = ? WHERE snakeId = ?");
+    stmt.run([name, binomialName, venomType, danger, rating, image, editable, id], function (err) {
+      if (err) reject(err);
+      else resolve(this.changes);
+    });
+    stmt.finalize();
+  });
+}
+
+
+
 // -==================================================-
 // Snake Shop Operations
 
@@ -330,5 +344,6 @@ module.exports = {
   deleteCompany,
   deleteSnakeMilker,
   deleteSnakeStatistic,
+  updateSnakeStatistic,
   deleteSnakeShop,
 };

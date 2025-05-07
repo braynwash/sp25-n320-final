@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS snakeStatistics (
     editable boolean not null DEFAULT 0
 );
 
-DROP TABLE IF EXISTS snakeStatistics;
+-- DROP TABLE IF EXISTS snakeStatistics; DO NOT USE THIS LINE
+
 
 INSERT INTO snakeStatistics (name, binomialName, venomType, danger, rating, image)
 VALUES 

@@ -18,6 +18,7 @@ const {
   deleteSnakeMilker,
   deleteSnakeShop,
   deleteSnakeStatistic,
+  updateSnakeStatistic
 } = require("../database");
 
 router.get("", async function (req, res) {
@@ -133,6 +134,26 @@ router.get("/statistics/:id", async function (req, res) {
   const statisticId = req.params.id;
   const response = await getSnakeStatisticsById(statisticId);
   res.status(200).json({ response });
+});
+router.put("/statistics/edit/:id", async function (req, res) {
+  const snakeId = req.params.id; 
+  const { name, binomialName, venomType, danger, rating, image, editable } = req.body;
+
+  try {
+    const result = await updateSnakeStatistic(snakeId, {
+      name,
+      binomialName,
+      venomType,
+      danger,
+      rating,
+      image,
+      editable
+    });
+
+    res.status(200).json({ message: "Snake updated successfully", result });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 
