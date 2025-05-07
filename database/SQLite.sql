@@ -43,25 +43,32 @@ VALUES ('Ethan "Fang" Calder', 9.8, 4120),
 
 SELECT * FROM topSnakeMilkers;
 
--- Create Snake Statistics Table
-CREATE TABLE snakeStatistics (
+
+CREATE TABLE IF NOT EXISTS snakeStatistics (
     snakeId integer PRIMARY KEY AUTOINCREMENT,
     name text not null,
     binomialName text not null,
-    venomType text not null
+    venomType text not null,
+    danger text not null,  
+    rating integer not null,
+    image text not null
 );
 
-INSERT INTO snakeStatistics (name, binomialName, venomType)
-VALUES ('King Cobra', 'Ophiophagus hannah', 'Neurotoxic'),
-('Black Mamba', 'Dendroaspis polylepis', 'Neurotoxic'),
-('Inland Taipan', 'Oxyuranus microlepidotus', 'Neurotoxic'),
-('Eastern Diamondback Rattlesnake', 'Crotalus adamanteus', 'Hemotoxic'),
-('Fer-de-Lance', 'Bothrops asper', 'Hemotoxic'),
-('Puff Adder', 'Bitis arietans', 'Cytotoxic'),
-('Saw-Scaled Viper', 'Echis carinatus', 'Hemotoxic'),
-('Coastal Taipan', 'Oxyuranus scutellatus', 'Neurotoxic'),
-('Gaboon Viper', 'Bitis gabonica', 'Hemotoxic + Cytotoxic'),
-('Mojave Rattlesnake', 'Crotalus scutulatus', 'Neurotoxic + Hemotoxic');
+DROP TABLE IF EXISTS snakeStatistics;
+
+INSERT INTO snakeStatistics (name, binomialName, venomType, danger, rating, image)
+VALUES 
+('King Cobra', 'Ophiophagus hannah', 'Neurotoxic', 'High', 5, 'kingCobra.png'),
+('Black Mamba', 'Dendroaspis polylepis', 'Neurotoxic', 'High', 5, 'blackMamba.png'),
+('Inland Taipan', 'Oxyuranus microlepidotus', 'Neurotoxic', 'Very High', 5, 'inlandTaipan.png'),
+('Eastern Diamondback Rattlesnake', 'Crotalus adamanteus', 'Hemotoxic', 'High', 4, 'easternDiamondback.png'),
+('Fer-de-Lance', 'Bothrops asper', 'Hemotoxic', 'High', 4, 'ferDeLance.png'),
+('Puff Adder', 'Bitis arietans', 'Cytotoxic', 'Moderate', 3, 'puffAdder.png'),
+('Saw-Scaled Viper', 'Echis carinatus', 'Hemotoxic', 'Moderate', 3, 'sawScaledViper.png'),
+('Coastal Taipan', 'Oxyuranus scutellatus', 'Neurotoxic', 'High', 4, 'costalTaipan.png'),
+('Gaboon Viper', 'Bitis gabonica', 'Hemotoxic + Cytotoxic', 'High', 4, 'gaboonViper.png'),
+('Mojave Rattlesnake', 'Crotalus scutulatus', 'Neurotoxic + Hemotoxic', 'High', 4, 'mojaveRattlesnake.png');
+
 
 SELECT * FROM snakeStatistics;
 

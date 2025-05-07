@@ -1,58 +1,77 @@
 let currentEditId = null;
-const snakes = [
-  {
-    id: 1,
-    name: "King Cobra",
-    image: "kingCobra.png",
-    species: "Ophiophagus hannah",
-    venom: "Neurotoxic",
-    danger: "High",
-    editable: false,
-  },
-  {
-    id: 2,
-    name: "Eastern Diamondback Rattlesnake",
-    image: "easternDiamondback.png",
-    species: "Crotalus adamanteus",
-    venom: "Hemotoxic",
-    danger: "High",
-    editable: false,
-  },
-];
+// const snakes = [
+//   {
+//     id: 1,
+//     name: "King Cobra",
+//     image: "kingCobra.png",
+//     species: "Ophiophagus hannah",
+//     venom: "Neurotoxic",
+//     danger: "High",
+//     editable: false,
+//   },
+//   {
+//     id: 2,
+//     name: "Eastern Diamondback Rattlesnake",
+//     image: "easternDiamondback.png",
+//     species: "Crotalus adamanteus",
+//     venom: "Hemotoxic",
+//     danger: "High",
+//     editable: false,
+//   },
+// ];
 
 const container = document.getElementById("snakeContainer");
 
-function renderSnakes() {
-  container.innerHTML = "";
+async function getAllSnakeStatistics() {
+  try {
+    const response = await fetch('/api/statistics');
+    const snakes = await response.json();
+    return snakes;
+  } catch (error) {
+    console.error("Error fetching snakes:", error);
+  }
+}
 
-  snakes.forEach((snake) => {
-    const card = document.createElement("div");
-    card.className = "snake-card";
+async function renderSnakes() {
+  try {
+    const snakes = await getAllSnakeStatistics();
+    const snakeArray = snakes.response || [];
+    console.log(snakeArray);
 
-    card.innerHTML = `
-      <h2>${snake.name}</h3>
-      <img class="snakeImg" src="../../assets/img/snakeImg/${snake.image}" alt="${snake.name}">
-      <p><strong>Species:</strong> ${snake.species}</p>
-      <p><strong>Venom:</strong> ${snake.venom}</p>
-      <p><strong>Danger:</strong> ${snake.danger}</p>
-    `;
+    const container = document.getElementById("snakeContainer");
+    container.innerHTML = "";
 
-    if (snake.editable) {
-      const editButton = document.createElement("button");
-      editButton.textContent = "Edit";
-      editButton.onclick = () => editSnake(snake.id);
+    snakeArray.forEach(snake => {
+      const card = document.createElement("div");
+      card.className = "snake-card";
 
-      const deleteButton = document.createElement("button");
-      deleteButton.className = "delete";
-      deleteButton.textContent = "Delete";
-      deleteButton.onclick = () => deleteSnake(snake.id);
+      card.innerHTML = `
+        <h3>${snake.name}</h3>
+        <img class="snakeImg" src="/assets/img/snakeImg/${snake.image}" alt="${snake.name}">
+        <p><strong>Species:</strong> ${snake.binomialName}</p>
+        <p><strong>Venom:</strong> ${snake.venomType}</p>
+        <p><strong>Danger Level:</strong> ${snake.danger}</p>
+        <p><strong>Rating:</strong> ${snake.rating}/5</p>  
+      `;
 
-      card.appendChild(editButton);
-      card.appendChild(deleteButton);
-    }
+      if (snake.editable) {
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.onclick = () => editSnake(snake.snakeId);
 
-    container.appendChild(card);
-  });
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete";
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => deleteSnake(snake.snakeId);
+
+        card.appendChild(editButton);
+        card.appendChild(deleteButton);
+      }
+      container.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error rendering snakes:", error);
+  }
 }
 
 function editSnake(id) {
@@ -136,4 +155,4 @@ snakeForm.addEventListener("submit", function (event) {
   snakeForm.reset();
 });
 
-document.getelemtById("editBtn").addEventListener("click", function (event) {});
+document.getElementById("editBtn").addEventListener("click", function (event) {});

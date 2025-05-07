@@ -85,8 +85,12 @@ router.get("/milkers/:id", async function (req, res) {
 });
 
 router.get("/statistics", async function (req, res) {
-  const response = await getAllSnakeStatistics();
-  res.status(200).json({ response });
+  try {
+    const response = await getAllSnakeStatistics();
+    res.status(200).json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 router.post("/statistics/add", async function (req, res) {
   try {
@@ -113,6 +117,8 @@ router.get("/statistics/:id", async function (req, res) {
   const response = await getSnakeStatisticsById(statisticId);
   res.status(200).json({ response });
 });
+
+
 router.get("/snakeShop", async function (req, res) {
   const response = await getAllSnakeShop();
   res.status(200).json({ response });
